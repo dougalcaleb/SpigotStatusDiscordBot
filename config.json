@@ -1,0 +1,10 @@
+{
+   "serverAddress": "",
+   "serverPort": 25565,
+   "verifyStatus": true,
+   "verifyInterval": 30,
+   "botChannel": "",
+   "useWebhook": true,
+   "webhookChannel": "",
+   "botToken": ""
+}
