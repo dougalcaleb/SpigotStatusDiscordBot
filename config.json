@@ -1,9 +1,11 @@
 {
-   "serverName": "the Lost Lads server",
+   "serverName": "",
+   "thumbnail": "",
    "serverAddress": "",
    "serverPort": 25565,
    "verifyStatus": true,
    "verifyInterval": 30,
+   "verificationTimeout": 3,
    "botChannel": "",
    "useWebhook": true,
    "webhookChannel": "",
