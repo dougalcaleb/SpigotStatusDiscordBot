@@ -52,6 +52,7 @@ Client.once("ready", () => {
    }
 });
 
+// React to input
 Client.on("message", (message) => {
 	if (message.channel.id != config.webhookChannel) return;
 
@@ -63,6 +64,7 @@ Client.on("message", (message) => {
 
    console.log("Health update recieved: " + command.join(" | "));
 
+   // Actions for different commands
    switch (command[0]) {
       case "SERVER_INIT":
          server.lastOnline = Date.now();
@@ -110,11 +112,13 @@ Client.on("message", (message) => {
 
 
 
-
+// Common functions
 class Utility {
    constructor() { }
    
+   // Send/ edit a status message
    message() {
+      // Server data
       let lines = [
          {
             name: "Connection Status: \u200b\u200b\u200b",
@@ -123,6 +127,7 @@ class Utility {
          }
       ];
 
+      // Online data
       if (server.online) {
          lines.push({
             name: "Current TPS:",
@@ -143,6 +148,7 @@ class Utility {
          });
       }
 
+      // Embed data
       let embedData = {
          color: server.online ? intConfig.onlineColor : intConfig.offlineColor,
          title: "Server Status",
@@ -156,12 +162,15 @@ class Utility {
          }
       }
 
+      // Custom message
       if (server.message.length > 0) {
          embedData.description = server.message.join("\n");
       }
 
+      // Create embed
       let embed = new Discord.MessageEmbed(embedData);
 
+      // Send a new message or edit the existing one
       if (outputs.status) {
          outputs.status.edit(embed).catch((error) => {
             console.log("Message edit failed");
@@ -179,6 +188,7 @@ class Utility {
       }      
    }
 
+   // Send an error message
    error(e) {
       let str = `HTTP Status: ${e.httpStatus} Code: ${e.code} Path: ${e.path}`;
       if (!server.errors.includes(str)) {
