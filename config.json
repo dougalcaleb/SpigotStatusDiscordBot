@@ -1,4 +1,5 @@
 {
+   "serverName": "the Lost Lads server",
    "serverAddress": "",
    "serverPort": 25565,
    "verifyStatus": true,
