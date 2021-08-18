@@ -7,7 +7,6 @@
    "verifyInterval": 30,
    "verificationTimeout": 3,
    "botChannel": "",
-   "useWebhook": true,
    "webhookChannel": "",
    "botToken": ""
 }

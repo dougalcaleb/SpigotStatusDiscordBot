@@ -39,15 +39,17 @@ Client.once("ready", () => {
    Client.user.setActivity(config.serverName, { type: "WATCHING" });
    
    // Verification ping
-   setInterval(() => {
-      Util.pingServer([config.serverPort, config.serverAddress], (result) => {
-         server.online = result;
-         server.verifiedAt = Date.now();
-         console.log(`Server is online: ${result}`);
-
-         Util.message();
-      });
-   }, config.verifyInterval * 1000);
+   if (config.verifyStatus) {
+      setInterval(() => {
+         Util.pingServer([config.serverPort, config.serverAddress], (result) => {
+            server.online = result;
+            server.verifiedAt = Date.now();
+            console.log(`Server is online: ${result}`);
+   
+            Util.message();
+         });
+      }, config.verifyInterval * 1000);
+   }
 });
 
 Client.on("message", (message) => {
